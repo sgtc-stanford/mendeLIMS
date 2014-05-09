@@ -52,7 +52,4 @@ gem 'nested_form'
 gem "ezcrypto"
 #gem "ar-extensions"
 gem "cancan", '~> 1.6.4'
-#gem 'calendar_date_select', :git => 'http://github.com/paneq/calendar_date_select.git'
-#gem 'calendar_date_select', :git => 'git://github.com/paneq/calendar_date_select.git'
-#gem 'calendar_date_select', :git => 'https://github.com/timcharper/calendar_date_select.git'
 
