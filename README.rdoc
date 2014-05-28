@@ -1,10 +1,10 @@
-MendeLIMS is a web-based laboratory information management system for clinical genome sequencing.
+<b>MendeLIMS is a web-based laboratory information management system for clinical genome sequencing.</b>
 
 MendeLIMS manages the experimental workflow for clinical genome sequencing projects, integrating clinical sample
 management and next generation sequencing (NGS).  MendeLIMS functionality with respect to genetic studies, can be
 grouped into four major categories:
-(1) enrollment of patients and acquisition of clinical samples,
-(2) sample assessment and processing,
-(3) genomic analysis through preparation of next generation DNA sequencing libraries or other molecular assays
-    such as microarrays and finally,
-(4) DNA sequencing of samples with associated quality control metrics.
+
+1. enrollment of patients and acquisition of clinical samples,
+2. sample assessment and processing,
+3. genomic analysis through preparation of next generation DNA sequencing libraries or other molecular assays such as microarrays and finally,
+4. DNA sequencing of samples with associated quality control metrics.
