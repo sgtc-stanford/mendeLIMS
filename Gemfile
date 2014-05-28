@@ -27,7 +27,6 @@ gem 'rails3-jquery-autocomplete', '~> 1.0.11'
 
 gem 'validates_timeliness', '~> 3.0'
 gem 'carrierwave', '~> 0.9'
-#gem 'blame'    Not working in Rails 3.2
 
 # Helpers for nested forms
 gem 'nested_form'
