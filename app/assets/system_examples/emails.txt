@@ -1,0 +1,8 @@
+Send_From	your_admin_email@yourco.com
+Admin_To	your_admin_email@yourco.com
+Samples_Email	Production
+Samples_Delivery	Deliver
+Samples_To	samples_user@yourco.com
+Orders_Email	NoEmail
+Orders_Delivery	None
+Orders_To	orders_users@yourco.edu

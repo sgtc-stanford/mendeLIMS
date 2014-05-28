@@ -1,0 +1,2 @@
+hipaa_password_for_encryption_algorithm
+hipaa_salt_for_encryption_algorithm
