@@ -19,7 +19,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-#gem 'jquery-rails', '2.0.2'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery_datepicker'
@@ -50,9 +49,5 @@ gem 'nested_form'
 
 # gems from R2.3.8 version
 gem "ezcrypto"
-#gem "ar-extensions"
 gem "cancan", '~> 1.6.4'
-#gem 'calendar_date_select', :git => 'http://github.com/paneq/calendar_date_select.git'
-#gem 'calendar_date_select', :git => 'git://github.com/paneq/calendar_date_select.git'
-#gem 'calendar_date_select', :git => 'https://github.com/timcharper/calendar_date_select.git'
-
+gem 'bartt-ssl_requirement', :require => 'ssl_requirement'
