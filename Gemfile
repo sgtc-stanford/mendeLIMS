@@ -19,7 +19,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-#gem 'jquery-rails', '2.0.2'
+# Gems only required in production (eg ssl)
+group :production do
+  gem 'bartt-ssl_requirement', :require => 'ssl_requirement'
+end
+
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery_datepicker'
@@ -28,7 +32,6 @@ gem 'rails3-jquery-autocomplete', '~> 1.0.11'
 
 gem 'validates_timeliness', '~> 3.0'
 gem 'carrierwave', '~> 0.9'
-#gem 'blame'    Not working in Rails 3.2
 
 # Helpers for nested forms
 gem 'nested_form'
@@ -50,6 +53,5 @@ gem 'nested_form'
 
 # gems from R2.3.8 version
 gem "ezcrypto"
-#gem "ar-extensions"
 gem "cancan", '~> 1.6.4'
 

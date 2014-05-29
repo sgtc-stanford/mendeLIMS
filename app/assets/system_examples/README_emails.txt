@@ -1,4 +1,4 @@
-Instructions for filling out emails.txt configuration file (in public/system):
+Instructions for filling out emails.txt configuration file (in app/assets/system):
 
 File should contain the following 8 tab-delimited lines (blank lines ignored, included for readability):
 
