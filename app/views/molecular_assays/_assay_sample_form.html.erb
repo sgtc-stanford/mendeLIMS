@@ -27,16 +27,12 @@
     <td><em>Sample: <%= i+1 %></em></td>
     <td><%= f.autocomplete_field :source_sample_name, molecular_assays_autocomplete_molecular_assay_source_sample_name_path, :size => 12 %></td>
     <!-- Update elements on selection of item -->
-    <script type="text/javascript"> 
-    //<![CDATA[
-      jQuery(document).ready(function(){      	
+    <%= javascript_tag do %>
       	$('#molecular_assay_' + <%= i %> + '_source_sample_name').bind('railsAutocomplete.select', function(event, data){
           $('#psample_vol_' + <%= i %>).html(data.item.final_vol);
           $('#psample_conc_' + <%= i %>).html(data.item.final_conc);
         });      	
-      });      
-    //]]>
-    </script>   	                                                                                                                      
+   <% end %>
     
 	<td><%= f.text_field(:volume, :size => 8, :onchange => "$('default_vol').update(this.val()*$('molecular_assay_#{i}_concentration').val()/$('psample_conc_#{i}').val()") %></td>
 	<td><%= f.text_field(:concentration, :size => 8, :onchange => "$('default_vol').update(this.val()*$('molecular_assay_#{i}_volume').val()/$('psample_conc_#{i}').val()") %></td>

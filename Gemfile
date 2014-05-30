@@ -24,6 +24,10 @@ group :production do
   gem 'bartt-ssl_requirement', :require => 'ssl_requirement'
 end
 
+# Gems for non-production environment (remove extraneous/verbose log messages)
+gem 'quiet_assets',     :group => [:development, :staging]
+gem 'webrick', '1.3.1', :group => [:development, :staging]
+
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery_datepicker'
@@ -54,4 +58,3 @@ gem 'nested_form'
 # gems from R2.3.8 version
 gem "ezcrypto"
 gem "cancan", '~> 1.6.4'
-

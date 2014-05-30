@@ -12,8 +12,9 @@
                   ['Field', 'Chemical?', @item.chemical_flag],
                   ['Field', 'Item Description', @item.item_description],
 				  ['Field', 'Size', @item.item_size],
-				  ['Field', 'Price', @item.item_price],
+				  ['Field', 'Unit Price', number_to_currency(@item.item_price)],
 				  ['Field', 'Qty', @item.item_quantity],
+                  ['Field', 'Total', number_to_currency(@item.item_ext_price)],
 				  ['Field', 'Recvd?', @item.item_received],
                   ['Field', 'Notes', @item.notes]] %>
 

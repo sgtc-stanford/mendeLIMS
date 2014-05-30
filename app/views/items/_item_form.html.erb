@@ -30,22 +30,34 @@
 	  <td width=60><%=f.text_field(:item_description, :size => 60) %></td>
 	</tr>
 	<tr>
-	  <th>Size:</th>
-	  <td><%=f.text_field :item_size, :size => 15 %></td>
-	  <th>Price:</th>
-	  <td><%=f.text_field :item_price, :size => 12 %></td>
+      <th>Quantity:</th>
+      <td><%=f.text_field :item_quantity, :size => 15 %></td>
+      <th>Size/Unit:</th>
+      <td><%=f.text_field :item_size, :size => 15 %></td>
 	</tr>
 	<tr>
-	  <th>Quantity:</th>
-	  <td><%=f.text_field :item_quantity, :size => 15 %></td>
-	  <% if controller.action_name != 'new' %>
-	    <th>Recv'd?</th>
-		<td><%=f.select(:item_received, %w{Y N}, {:include_blank => true}) %></td>
-	  <% end %>
+      <th>Unit Price:</th>
+      <td>$<%=f.text_field :item_price, :size => 12 %></td>
+      <th>Total:</th>
+      <td id="item_ext_price">$<%= f.object.item_ext_price %></td>
+      <%= javascript_tag do %>
+          $('#item_item_quantity').change(function(){
+          $('#item_ext_price').text("$" + $('#item_item_quantity').val() * $('#item_item_price').val());
+          });
+          $('#item_item_price').change(function(){
+          $('#item_ext_price').text("$" + $('#item_item_quantity').val() * $('#item_item_price').val());
+          });
+      <% end %>
 	</tr>
+    <% if controller.action_name != 'new' %>
+    <tr>
+      <th>Recv'd:</th>
+      <td><%=f.select(:item_received, %w{Y N}, {:include_blank => true}) %></td>
+    </tr>
+    <% end %>
 	<tr>
 	  <th>Notes:</th>
-	  <td colspan="3"><%=f.text_field :notes, :size => 50 %></td> 	
+	  <td colspan="3"><%=f.text_field :notes, :size => 50 %></td>
   	</tr>
   </table>
   </fieldset>

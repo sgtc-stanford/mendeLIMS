@@ -7,8 +7,9 @@
   <th>Chemical?</th>
   <th>Description:</th>
   <th>Quantity:</th>
-  <th>Size:</th>
-  <th>Price:</th>   
+  <th>Size/Unit:</th>
+  <th>&nbsp;Unit Price:</th>
+  <th>Total Price:</th>
   <% @items.each_with_index do |itm, i| %>
   <%= fields_for 'items_' + i.to_s, itm do |f| %>
 
@@ -22,38 +23,43 @@
   <td><%= f.autocomplete_field :catalog_nr, items_autocomplete_item_catalog_nr_path, size: '8' %></td>
   
   <!-- Update elements on selection of item -->
-  <script type="text/javascript"> 
-  //<![CDATA[
-    jQuery(document).ready(function(){      	
+  <%= javascript_tag do %>
      $('#items_' +  <%= i %> + '_catalog_nr').bind('railsAutocomplete.select', function(event, data){
         $('#items_' + <%= i %> + '_company_name' ).val(data.item.company_name);
         $('#items_' + <%= i %> + '_item_description').val(data.item.desc);
         $('#items_' + <%= i %> + '_item_price').val(data.item.price);
       });      	      	
-    });      
-  //]]>
-  </script>     
+  <% end %>
 
   <td><%= f.autocomplete_field :company_name, items_autocomplete_item_company_name_path %></td>       
   <td><%=f.select(:chemical_flag, %w{Y N}, {:include_blank => true}) %></td>      
   <td><%= f.autocomplete_field :item_description, items_autocomplete_item_item_description_path, size: '45' %></td>
   
   <!-- Update elements on selection of item -->
-  <script type="text/javascript"> 
-  //<![CDATA[
-    jQuery(document).ready(function(){ 	
+  <%= javascript_tag do %>
      $('#items_' +  <%= i %> + '_item_description').bind('railsAutocomplete.select', function(event, data){        
         $('#items_' + <%= i %> + '_catalog_nr').val(data.item.cat_nr);
         $('#items_' + <%= i %> + '_company_name' ).val(data.item.company_name);
         $('#items_' + <%= i %> + '_item_price').val(data.item.price);
       });      	      	
-    });      
-  //]]>
-  </script>   
+  <% end %>
+
+  <% item_total_tag = 'item_' + i.to_s + '_total' %>
+  <% item_price_tag = 'items_' + i.to_s + '_item_price' %>
+  <% item_qty_tag   = 'items_' + i.to_s + '_item_quantity' %>
      
   <td><%=f.text_field(:item_quantity, :size => 8) %></td>     
   <td><%=f.text_field(:item_size, :size => 8) %></td>             
-  <td><%=f.text_field(:item_price, :size => 8) %></td>
+  <td>$<%=f.text_field(:item_price, :size => 8) %></td>
+  <td id="<%= item_total_tag %>" style="font-size:1em">&nbsp;</td>
+  <%= javascript_tag do %>
+      $('#<%= item_qty_tag %>').change(function(){
+        $('#<%= item_total_tag %>').text("$" + $('#<%= item_qty_tag %>').val() * $('#<%= item_price_tag %>').val());
+        });
+      $('#<%= item_price_tag %>').change(function(){
+        $('#<%= item_total_tag %>').text("$" + $('#<%= item_qty_tag %>').val() * $('#<%= item_price_tag %>').val());
+        });
+  <% end %>
 </tr>   
 <tr>
   <td></td><th style="text-decoration: none; text-align: right;">Notes:</th><td colspan="6"><%=f.text_field(:notes, :size => 50)%></td>

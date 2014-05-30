@@ -30,15 +30,11 @@ class Item < ActiveRecord::Base
                         :item_description, :item_quantity, :deliver_site
                         
   DELIVER_SITES = %w{SGTC CCSR}
-  
+
   def item_ext_price
-    if (item_quantity.nil? || item_price.nil?)
-      return nil
-    else
-      return item_quantity.to_i * item_price
-    end
+    ((item_quantity.nil? || item_price.nil?) ? nil : item_quantity.to_i * item_price)
   end
-  
+
   def ordered?
     !(order_id.nil? || order_id == 0)
     #!(po_number.nil? || po_number.blank?)
@@ -53,10 +49,6 @@ class Item < ActiveRecord::Base
       req_nm = [first_and_last[0], first_and_last[1][0,1]].join(' ')
     end
     return req_nm
-  end
-  
-  def item_ext_price
-    return (item_quantity.to_i > 0 ? item_quantity.to_i * item_price : nil)
   end
   
   def self.find_all_unique(condition_array=[])
