@@ -155,5 +155,5 @@ inflammation infiltration	3	Moderate
 inflammation infiltration	4	High
 inflammation type	1	Chronic
 inflammation type	2	Acute
-grants  1   NIH grant
-grants  2   Private foundation
+grants	1	NIH grant
+grants	2	Private foundation
