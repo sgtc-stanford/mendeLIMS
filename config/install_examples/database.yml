@@ -33,11 +33,7 @@ test:
   <<: *login
   database: mendeLIMS_test
 
-
 production:
   <<: *login
   database: mendeLIMS_prod
 
-oligo_inventory:
-  <<: *login
-  database: mendeLIMS_prod 
