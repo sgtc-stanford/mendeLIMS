@@ -38,13 +38,27 @@ class AttachedFile < ActiveRecord::Base
     end
   end
   
+  # This method is for compatibility with previous file upload module
+  # Previous module did not store id part of file name in the attached_files table
+  def stored_name_has_id
+    fn_part1 = document.file.identifier.split('_')[0]
+    (fn_part1 == sampleproc_id.to_s ? true : false)
+  end
+
   def doc_filename
-    #return document.path.split('/').last
-    return document.file.identifier
+    if stored_name_has_id
+      return document.file.identifier[(sampleproc_id.to_s.size+1)..-1]
+    else
+      return document.file.identifier
+    end
   end
 
   def doc_stored_name
-    return [sampleproc_id.to_s, '_', doc_filename].join
+    if stored_name_has_id
+      return document.file.identifier
+    else
+      return [sampleproc_id.to_s, '_', doc_filename].join
+    end
   end
 
   #def basename_with_ext
@@ -56,6 +70,6 @@ class AttachedFile < ActiveRecord::Base
   
   def doc_fullpath
     #return document.current_path
-    return File.join(FILES_ROOT, sampleproc_type, doc_stored_name)
+    File.join(FILES_ROOT, sampleproc_type, doc_stored_name)
   end
 end
