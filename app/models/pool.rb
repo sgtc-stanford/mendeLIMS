@@ -1,4 +1,4 @@
-# == Schema Information
+## == Schema Information
 #
 # Table name: pools
 #
@@ -21,11 +21,10 @@
 
 class Pool < InventoryDB
   has_and_belongs_to_many :primers
-  validates_presence_of :primer_name
-  validates_uniqueness_of :primer_name
+  validates_presence_of :pool_name, :tube_label
+  validates_uniqueness_of :pool_name, :tube_label
   
-  #USING_POOLS = (self.find(:first).total_oligos == 0 && self.find(:all).size == 1 ? nil : 'yes')
-  USING_POOLS = (self.first.total_oligos == 0 && self.all.size == 1 ? nil : 'yes')
+  USING_POOLS = ((self.first.nil? || (self.first.total_oligos == 0 && self.all.size == 1)) ? nil : 'yes')
 
   HUMAN_ATTRIBUTE_NAMES = {
     :pool_name => [POOL_TYPE, ' Pool'].join,
@@ -34,7 +33,6 @@ class Pool < InventoryDB
 
   class << self
     def human_attribute_name attribute_name
-      #HUMAN_ATTRIBUTE_NAMES[attribute_name.to_sym] || super
       HUMAN_ATTRIBUTE_NAMES[attribute_name.to_sym] || super(name, *args)
     end
   end
@@ -67,7 +65,6 @@ class Pool < InventoryDB
     else
       sql_condition = "LEFT(tube_label,2) IN ('OS', 'PP')"
     end
-    #return self.find(:all, :order => "tube_label", :conditions => sql_condition)
     return self.order(:tube_label).where(sql_condition).all
   end
 
