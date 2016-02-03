@@ -118,7 +118,7 @@ StorageDevice.create!(:device_name => 'Disk1',
 ##########################################################################################
 ConsentProtocol.connection.execute("TRUNCATE TABLE consent_protocols")
 
-%w{['NA', 'Anonymous Sample'], ['1123', 'Consent Protocol']}.each do |consent|
+[['NA', 'Anonymous Sample'], ['1123', 'Consent Protocol']].each do |consent|
   ConsentProtocol.create!(:consent_nr   => consent[0],
                           :consent_name => consent[1],
                           :consent_abbrev => consent[1])

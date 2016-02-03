@@ -41,7 +41,7 @@ class Ability
     # Admins have access to all functionality
     if user.has_role?("admin")
       can :manage, :all
-    
+      cannot :delete, Category if DEMO_APP
     else
       # Researchers can enter/update processed samples, seq libs, flow cells
       if user.has_role?("researcher") || user.has_role?("lab_admin")

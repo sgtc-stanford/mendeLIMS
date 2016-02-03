@@ -16,7 +16,7 @@
     <td><%=h category.category_description %></td>
     <td><%= link_to 'Show', category %></td>
 	<td><% if can? :edit, category %>
-        <%= link_to 'Edit', edit_category_path(category) %></td>
+        <%= link_to 'Edit', edit_category_path(category) %>
 	    <% end %></td>
 	<td><% if can? :delete, category %>
         <%= link_to 'Delete', category, :confirm => 'Are you sure?', :method => :delete %>
