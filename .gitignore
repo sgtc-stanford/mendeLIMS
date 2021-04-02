@@ -34,4 +34,4 @@
 
 .rvmrc
 /.project
-/Gemfile.lock
+#/Gemfile.lock
